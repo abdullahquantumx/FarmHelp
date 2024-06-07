@@ -1,50 +1,54 @@
 'use client';
 
-
 import Link from "next/link";
 import React from "react";
+import { motion } from "framer-motion";
 
 const Services = () => {
-  const restaurantsData = [
+  const boxVariants = {
+    hidden: { opacity: 0, scale: 0.9 },
+    show: { opacity: 1, scale: 1, transition: { duration: 0.04, ease: "easeInOut" } },
+    hover: { scale: 1.05 }
+  };
+  
+
+  const servicesData = [
     {
       id: 1,
-      name: "Crop Recomendation",
-      image: "./rye-5399962_640.jpg",
-      href:"/Services/Crop1" // Assuming the image is in the public directory
+      name: "Crop Recommendation",
+      color: "bg-green-300",
+      href: "/Services/Crop1"
     },
     {
       id: 2,
       name: "Crop Yield Prediction",
-      image: "./rye-4269161_1280.jpg",
-      href:"/Services/Crop2" // Assuming the image is in the public directory
-    },
+      color: "bg-green-300",
+      href: "/Services/Crop2"
+    }
   ];
 
   return (
-    <div className="flex items-center justify-center   min-h-screen  bg-cover bg-no-repeat bg-center " 
-    style={{
-        backgroundImage: "url('./wheat-fields-4439896_1280.jpg')"
-      }}
-    >
-      <div className="flex flex-wrap justify-center">
-        {restaurantsData.map((restaurant) => (
-          <div
-            key={restaurant.id}
-            className="w-full sm:w-1/2 md:w-1/2 lg:w-1/2 xl:w-1/3 rounded overflow-hidden shadow-md m-6 mx-4 sm:mx-4 md:mx-8 lg:mx-16 xl:mx-20 transition-transform transform hover:scale-105"
+    <div className="flex items-center justify-center min-h-screen bg-green-900 overflow-y-hidden p-4">
+      <div className="flex flex-wrap justify-center w-full gap-16">
+        {servicesData.map((service) => (
+          <motion.div
+            key={service.id}
+            variants={boxVariants}
+            initial="hidden"
+            whileHover="hover"
+            animate="show"
+            className="text-black w-full sm:w-11/12 md:w-5/6 lg:w-3/4 xl:w-2/5 2xl:w-1/4 rounded overflow-hidden shadow-md m-2 transition-transform transform"
+            style={{ maxWidth: "480px" }} // Use maxWidth for larger screens
           >
-            <div className="relative group">
-              <img
-                className="w-full h-full object-cover transition-transform duration-500 transform hover:scale-105"
-                src={restaurant.image}
-                alt={restaurant.name}
-              />
-              <div className="absolute inset-0 flex items-center justify-center transition-opacity duration-500 opacity-0 group-hover:opacity-100 bg-black bg-opacity-50">
-                <Link href={restaurant.href} className="bg-white text-black py-2 px-4 rounded hover:bg-gray-200 transition-colors duration-300">
-                  {restaurant.name}
-                </Link>
-              </div>
+            <div
+              className={`${service.color} flex items-center justify-center text-center transition-bg-opacity duration-300 hover:bg-opacity-70`}
+              style={{ height: "300px" }} // Adjust height for responsiveness
+            >
+              <Link href={service.href} className="text-green-900 font-bold text-2xl">
+                {service.name}
+              </Link>
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
     </div>
