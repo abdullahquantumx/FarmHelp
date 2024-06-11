@@ -24,27 +24,26 @@ const About = () => {
         transition={{ duration: 0.6 }}
         className="bg-green-300 bg-opacity-75 p-8 w-full max-w-screen-md rounded-lg text-center text-green-900 font-mono font-bold"
       >
-        {[
-          "What we do at FoodCoaster?",
-          "We are the only food delivery service at NIT Rourkela campus.",
-          "All the eateries in the NITR campus will be registered under us.",
-          "Through our website, we will be accepting orders from the students and staff residing in NITR.",
-          "Each one of them will receive orders through the website and the food will be delivered by one of their workers to the designated location.",
-          "In case of the unavailability of workers for the delivery, we would provide the same for the job with some additional charges.",
-          "In case of the unavailability of workers for the delivery, we would provide the same for the job with some additional charges.",
-          "This website acts as a bridge between the students and the vendors."
-        ].map((text, index) => (
-          <motion.p
-            key={index}
-            variants={contentVariants}
-            initial="hidden"
-            animate="show"
-            transition={{ duration: 0.3, delay: index * 0.1 }}
-            className="mb-6"
-          >
-            {text}
-          </motion.p>
-        ))}
+        <ul className="list-disc list-inside space-y-4 text-left">
+          {[
+            "At FarmHelp, we harness the power of machine learning to provide accurate crop yield predictions and tailored recommendations to farmers. Our advanced AI models analyze data to offer insights that help maximize agricultural productivity.",
+            "By taking input on soil type, weather conditions, crop variety, and other factors, FarmHelp provides personalized crop suggestions that align with the unique needs of each farm. This ensures farmers can make informed decisions to optimize their yields.",
+            "Designed with simplicity in mind, FarmHelp's intuitive interface makes it easy for farmers of all tech skill levels to navigate and use our tools. Input your farm data, and receive clear, actionable advice in just a few clicks.",
+            "FarmHelp promotes sustainable farming by recommending practices that enhance soil health and reduce environmental impact. Our platform encourages efficient resource use, contributing to long-term agricultural sustainability.",
+            "FarmHelp offers tailored insights for both seasoned farmers and newcomers, making advanced agricultural knowledge accessible to all."
+          ].map((text, index) => (
+            <motion.li
+              key={index}
+              variants={contentVariants}
+              initial="hidden"
+              animate="show"
+              transition={{ duration: 0.3, delay: index * 0.1 }}
+              className="mb-2"
+            >
+              {text}
+            </motion.li>
+          ))}
+        </ul>
       </motion.div>
     </div>
   );
