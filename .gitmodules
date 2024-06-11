@@ -1,0 +1,3 @@
+[submodule "FarmHelp_ML"]
+	path = FarmHelp_ML
+	url = https://github.com/abdullahquantumx/FarmHelp_ML.git
